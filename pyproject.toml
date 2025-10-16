@@ -7,7 +7,7 @@ name = "local-project-memory"
 version = "0.1.0"
 description = "MCP server for storing and retrieving project-specific context for LLMs"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [
     {name = "Eric Austin", email = "e@plsr.io"}
@@ -44,11 +44,11 @@ packages = ["src/local_project_memory"]
 
 [tool.black]
 line-length = 100
-target-version = ['py312']
+target-version = ['py311']
 
 [tool.ruff]
 line-length = 100
-target-version = "py312"
+target-version = "py311"
 select = ["E", "F", "I", "N", "W", "UP"]
 
 [tool.mypy]
