@@ -209,7 +209,3 @@ Instructions for the memory system are stored at:
 ## License
 
 MIT
-
-## Author
-
-Your Name <your.email@example.com>

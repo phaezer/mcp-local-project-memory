@@ -7,10 +7,10 @@ name = "local-project-memory"
 version = "0.1.0"
 description = "MCP server for storing and retrieving project-specific context for LLMs"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 license = {text = "MIT"}
 authors = [
-    {name = "Your Name", email = "your.email@example.com"}
+    {name = "Eric Austin", email = "e@plsr.io"}
 ]
 keywords = ["mcp", "memory", "context", "llm", "ai"]
 classifiers = [
@@ -44,11 +44,11 @@ packages = ["src/local_project_memory"]
 
 [tool.black]
 line-length = 100
-target-version = ['py311']
+target-version = ['py312']
 
 [tool.ruff]
 line-length = 100
-target-version = "py311"
+target-version = "py312"
 select = ["E", "F", "I", "N", "W", "UP"]
 
 [tool.mypy]
@@ -56,3 +56,11 @@ python_version = "3.11"
 strict = true
 warn_return_any = true
 warn_unused_configs = true
+
+[tool.pyright]
+venvPath = "~/.pyenv/versions/"
+venv = "mcp-local-project-memo"
+pythonVersion = "3.11"
+strictGenericNarrowing = false
+typeCheckingMode = "basic"
+

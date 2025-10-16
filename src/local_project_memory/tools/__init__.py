@@ -1,7 +1,6 @@
 """Memory management tools for the MCP server."""
 
 from datetime import datetime
-from pathlib import Path
 from typing import Optional
 
 from fastmcp import FastMCP
@@ -17,11 +16,11 @@ def register_tools(mcp: FastMCP, config: MemoryConfig) -> None:
     def store_memory(
         title: str = Field(description="Title/name for the memory"),
         content: str = Field(description="Content to store in the memory"),
-        tags: Optional[str] = Field(
+        tags: str | None = Field(
             default=None,
             description="Comma-separated tags for categorization"
         )
-    ) -> dict:
+    ) -> dict[str, bool | str]:
         """Store a new memory as a markdown file.
 
         Args:
@@ -56,7 +55,7 @@ tags: {tags if tags else ""}
 
         return {
             "success": True,
-            "message": f"Memory stored successfully",
+            "message": "Memory stored successfully",
             "file_path": str(file_path),
             "title": title
         }
@@ -92,7 +91,7 @@ tags: {tags if tags else ""}
 
     @mcp.tool()
     def list_memories(
-        tag_filter: Optional[str] = Field(
+        tag_filter: str | None = Field(
             default=None,
             description="Optional tag to filter memories by"
         )
@@ -146,7 +145,7 @@ tags: {tags if tags else ""}
     @mcp.tool()
     def search_memories(
         query: str = Field(description="Search query to find in memory contents")
-    ) -> dict:
+    ) -> dict:  # pyright: ignore[reportMissingTypeArgument]
         """Search through all memories for a query string.
 
         Args:
@@ -267,7 +266,7 @@ tags: {tags if tags else ""}
         }
 
     @mcp.tool()
-    def get_memory_instructions() -> dict:
+    def get_memory_instructions() -> dict[str, str | bool]:
         """Get instructions on how to interact with the memory system.
 
         Returns:
